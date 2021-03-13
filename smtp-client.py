@@ -31,7 +31,9 @@ def choose_recepients(file):
     return names, emails
 
 
-def auth_smtp_client(smtp, host=465):
+def auth_smtp_client(smtp, port=465):
+    host = smtplib.SMTP_SSL(host=smtp, port=port)
+    return
 
 
 if __name__ == '__main__':
