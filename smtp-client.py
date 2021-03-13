@@ -7,6 +7,7 @@
 *Put some description for this file here*
 
 """
+import re
 import smtplib
 
 def main():
@@ -16,7 +17,19 @@ def main():
 def read_message_file(file):
     return file
 
-def choose_recepients(file)
+
+# Patterns for regex
+find_email = re.compile(r"(\w+[\._]|\w+)(@)(\w+(\.)\w+)")
+find_name = re.compile(r"\w+ ")
+def choose_recepients(file):
+    names = []
+    emails = []
+    with open(file, 'r') as f:
+        for line in f.readlines():
+            names.append(find_name.search(line).group(0))
+            emails.append(find_email.search(line).group(0))
+    return names, emails
+
 
 def auth_smtp_client(smtp, host=465):
 
