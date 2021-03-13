@@ -19,12 +19,14 @@ def check_data_for_write(firstname: str, lastname: str):
         if chr(65) <= symbols <= chr(90) or chr(97) <= symbols <= chr(122):
             continue
         else:
-            return print("Error enter first name")
+            print("Error input data!")
+            return False
     for symbols in lastname:
         if chr(65) <= symbols <= chr(90) or chr(97) <= symbols <= chr(122):
             continue
         else:
-            return print("Error enter last name")
+            print("Error input data!")
+            return False
     return True
 
 
@@ -61,7 +63,10 @@ def additional_recording_data_file():
     file.close()
 
 
-enter_first_name = str(input("Please, enter to your first name: "))
-enter_last_name = str(input("Please, enter to your last name:  "))
-test_file_for_emptiness()
+while True:
+    enter_first_name = str(input("Please, enter to your first name: "))
+    enter_last_name = str(input("Please, enter to your last name:  "))
+    if check_data_for_write(enter_first_name, enter_last_name):
+        break
 
+test_file_for_emptiness()
